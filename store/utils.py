@@ -5,7 +5,10 @@ def cookieCart(request):
     items=[]
     cartitems=0
     order={'get_cart_items':0,'get_cart_total':0}
-    data=json.loads(request.COOKIES['cart'])
+    try:
+        data=json.loads(request.COOKIES['cart'])
+    except:
+        data={}
     total=order['get_cart_total']
     shipping=False
     for k in data:
